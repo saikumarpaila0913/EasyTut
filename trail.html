@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Banner with Text Overlay</title>
+<style>
+  /* Style for the banner container */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 800px; /* Adjusted height */
+    overflow: hidden;
+    margin-top: 100px; /* Adjusted margin to move the banner down */
+  }
+
+  /* Style for the image */
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Style for the text overlay */
+  .banner .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black; /* Text color */
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .banner .text h1 {
+    font-weight: bold; /* Bold font for heading */
+    margin-bottom: 10px; /* Add some space below heading */
+  }
+
+  /* Style for the header with logo and navigation */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+  .logo {
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Admin</a>
+  </nav>
+  <div class="buttons">
+    <a href="#" class="login-btn">Login</a>
+    <button class="signup-btn">Sign Up</button>
+  </div>
+</header>
+
+<div class="banner">
+  <img src="ban.jpeg" alt="Banner Image">
+  <div class="text">
+    <h1>Unlock Knowledge Anywhere, Anytime With Experts.</h1>
+    <p>Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.</p>
+  </div>
+</div>
+
+<!-- Additional content to push the banner down -->
+<div style="height: 900px;"></div>
+
+</body>
+</html>

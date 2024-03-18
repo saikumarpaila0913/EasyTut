@@ -1,1 +1,1 @@
-# EasyTut
+# EasyTutor

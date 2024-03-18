@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Banner with Text Overlay</title>
+<style>
+  /* Style for the banner container */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjusted height */
+    overflow: hidden;
+    margin-top: 100px; /* Adjusted margin to move the banner down */
+  }
+
+  /* Style for the image */
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Style for the text overlay */
+  .banner .text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    
+    transform: translate(-50%, -50%);
+    color: black; /* Text color */
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .banner .text h1 {
+    font-weight: bold; /* Bold font for heading */
+    margin-bottom: 10px; /* Add some space below heading */
+  }
+
+  /* Style for the header with logo and navigation */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+  .logo {
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+    max-width: 100px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  #login-form, #signup-form {
+            display: none; /* Hide the login and signup forms initially */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-top: 20px; /* Added margin to separate sections */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+
+         .image-container {
+            position: absolute;
+            right: 50%; /* Position the container halfway from the right edge */
+            top: 50%; /* Center vertically */
+            transform: translate(50%, -50%); /* Adjust to center horizontally */
+        }
+
+        .image {
+            max-width: 100%; /* Ensure the image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Prevent any additional space below the image */
+        }
+
+
+        
+
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .section {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .left-column {
+            flex: 1; /* Take up remaining space */
+            padding-right: 20px; /* Add some space between text and sections */
+        }
+
+        .right-column {
+            flex: 1; /* Take up remaining space */
+        }
+
+        h1, p {
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Form styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+  footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        footer img {
+            width: 250px; /* Adjust the size of the logo */
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons {
+            margin-top: 20px;
+        }
+
+        footer .section {
+            margin-bottom: 20px;
+        }
+
+        footer nav a {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        .login-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .login-form input {
+            width: 200px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .signup-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .signup-form input {
+            width: 200px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signup-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+.fixed{
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    position: fixed;
+    right: 0%;
+    bottom: 20px;
+    color: #25d366;
+  }
+  body{
+    height: 1500px;
+  }
+.whatsapp-floter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-floter img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-floter img:hover {
+  transform: scale(1.1);
+}
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-width: 80px;
+    margin-left: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+</style>
+</head>
+<body onload="hideForms()">
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn">Login / Sign Up</a>
+  </div>
+</header>
+
+<div class="banner">
+  <img src="ban.jpeg" alt="Banner Image">
+  <div class="text">
+    <h1>Unlock Knowledge Anywhere, Anytime With Experts.</h1>
+    <p>Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.</p>
+  </div>
+</div>
+
+<!-- Additional content to push the banner down -->
+
+
+
+<h2 style="font-size:50; text-align:center;margin-top: 80px;"> EasyTutor's Way of Success </h2>
+
+<div class="container">
+  <div class="section">
+      <h2>Industry-Oriented Curriculum</h2>
+      <p>Build your career with our cutting-edge curriculum which is based on high in-demand tech skills.</p>
+  </div>
+  <div class="section">
+      <h2>Top Experts as Educators</h2>
+      <p>Our programs are led by tech professionals who will share their expertise with you as an educator.</p>
+  </div>
+  <div class="section">
+      <h2>Great Career Opportunities</h2>
+      <p>Fast-track your career with our expert-led mock interviews and complete job assistance.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="left-column">
+      <h1 style = "margin-bottom:10px;margin-left: 40px;">Your Career <br> Our Responsibility</h1>
+      <p style="margin-left: 40px;">Your success is our mission, and we will support you until you reach your true potential and secure your dream job.</p>
+  </div>
+  <div class="right-column">
+      <div class="section-container">
+          <div class="section">
+              <h2>Resume & LinkedIn Building</h2>
+              <p>Build an impactful resume with real-world projects and skills to stand out among recruiters.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Soft Skill Development</h2>
+              <p>Enhance your personality for unparalleled career growth.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Mock Interviews</h2>
+              <p>Refine your skills with unlimited mock interviews with the experts to shine out on your D-day.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Complete Job Assistance</h2>
+              <p>Job referrals and guidance to secure your ideal tech job at top companies.</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+</body>
+
+
+<div class="whatsapp-floter">
+  <a href="https://api.whatsapp.com/send?phone=7382766952" target="_blank">
+    <img src="whatsapp.jpeg" alt="WhatsApp Icon">
+  </a>
+</div>
+
+
+<footer>
+  <div class="footer-section">
+      <img src="niha.png" alt="EasyTutor Logo">
+      <p>With you, every step of the way</p>
+  </div>
+  <div class="footer-section">
+      <h2>ABOUT EASYTUTOR</h2>
+      <nav>
+          <a href="index.html">Home</a>
+          <a href="ContactUs.html">Contact Us</a>
+          <a href="FAQs.html">FAQs</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+      </nav>
+  </div>
+  <div class="footer-section">
+      <h2>COURSES</h2>
+      <nav>
+          <a href="Courses.html">Full Stack Web Development</a>
+          <a href="Courses.html">Data Science and Analytics</a>
+          <a href="Courses.html">Advanced Web Development</a>
+      </nav>
+  </div>
+  <div class="footer-section">
+      <h2>EXPLORE</h2>
+      <nav>
+          <a href="#">Become a mentor</a>
+          <a href="#">Masterclass</a>
+      </nav>
+  </div>
+</footer>
+
+
+
+
+</html>
